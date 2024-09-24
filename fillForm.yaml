@@ -1,0 +1,33 @@
+text_input: &text_input
+  answer: Сбер карта
+  description: Обычное текстовое поле
+  selector: null
+
+search_input: &search_input
+   answer: Кредитная карта
+   description: Поиск в плоском справочнике
+   order: 1
+   selector: null
+
+person_input: &person_input
+  answer: 
+    first_name: Alex
+    second_name: Zaveryaev
+    employee_id: 21100018
+  description: Поиск человека по ФИО или табельнику
+  selector: null
+
+РИСК_ПОВЕДЕНИЯ:
+  ОЦЕНКА:
+    ИМЯ_ПРОДУКТА:
+      selector: 
+        id: product_name
+      answer:
+        Кредитная карта
+
+ПОЛЯ:
+  ПОЛЕ: 
+
+production:
+  <<: *defaults  # Подключаем якорь "defaults" повторно
+  host:  # Перезаписываем параметр "host"
