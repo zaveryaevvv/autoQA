@@ -1,11 +1,13 @@
 text_input: &text_input
   answer: Сбер карта
   description: Обычное текстовое поле
+  required: null
   selector: null
 
 search_input: &search_input
    answer: Кредитная карта
    description: Поиск в плоском справочнике
+   required: null
    order: 1
    selector: null
 
@@ -21,7 +23,7 @@ person_input: &person_input
 РИСК_ПОВЕДЕНИЯ:
   ОЦЕНКА:
     ИНПУТ:
-      ИМЯ_ПРОДУКТА:
+      ИМЯ_ПРОДУКТА: &РИСК_ПОВЕДЕНИЯ.ОЦЕНКА.ИНПУТ.ИМЯ_ПРОДУКТА
         type: *text_input
         answer: Кредитная карта
         required: yes
