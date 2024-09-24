@@ -17,16 +17,27 @@ person_input: &person_input
   description: Поиск человека по ФИО или табельнику
   selector: null
 
+
 РИСК_ПОВЕДЕНИЯ:
   ОЦЕНКА:
-    ИМЯ_ПРОДУКТА:
-      selector: 
-        id: product_name
-      answer:
-        Кредитная карта
+    ИНПУТ:
+      ИМЯ_ПРОДУКТА:
+        type: *text_input
+        answer: Кредитная карта
+        required: yes
+        selector:
+          id: product_name
 
-ПОЛЯ:
-  ПОЛЕ: 
+
+    КНОПКА:
+      ДАЛЕЕ: &РИСК_ПОВЕДЕНИЯ.ОЦЕНКА.КНОПКА.ДАЛЕЕ
+        selector: 
+          id: next_button
+      ОТМЕНИТЬ: &РИСК_ПОВЕДЕНИЯ.ОЦЕНКА.КНОПКА.ОТМЕНИТЬ
+        selector:
+          id: cancel_button
+
+
 
 production:
   <<: *defaults  # Подключаем якорь "defaults" повторно
