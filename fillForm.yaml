@@ -1,35 +1,35 @@
 text_input_type: &text_input_type
-  answer: null
+  answer:
   description: Обычное текстовое поле
   type: text_input
-  required: null
+  required:
   selector: 
-    id: null
-    attribute: null
-    xpath: null
+    id:
+    attribute:
+    xpath:
 
 search_input_type: &search_input_type
-   answer: null
+   answer:
    description: Поиск в плоском справочнике
    type: search_input
-   required: null
+   required:
    order: 1
    selector: 
-    id: null
-    attribute: null
-    xpath: null
+    id:
+    attribute:
+    xpath:
 
 person_input_type: &person_input_type
   answer: 
-    first_name: null
-    second_name: null
-    employee_id: null
+    first_name:
+    second_name: 
+    employee_id: 
   description: Поиск человека по ФИО или табельнику
   type: person_input
   selector: 
-    id: null
-    attribute: null
-    xpath: null
+    id: 
+    attribute: 
+    xpath: 
 
 
 КНОПКА:
