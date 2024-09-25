@@ -1,46 +1,79 @@
-text_input: &text_input
-  answer: Сбер карта
+text_input_type: &text_input_type
+  answer: null
   description: Обычное текстовое поле
+  type: text_input
   required: null
-  selector: null
+  selector: 
+    id: null
+    attribute: null
+    xpath: null
 
-search_input: &search_input
-   answer: Кредитная карта
+search_input_type: &search_input_type
+   answer: null
    description: Поиск в плоском справочнике
+   type: search_input
    required: null
    order: 1
-   selector: null
+   selector: 
+    id: null
+    attribute: null
+    xpath: null
 
-person_input: &person_input
+person_input_type: &person_input_type
   answer: 
-    first_name: Alex
-    second_name: Zaveryaev
-    employee_id: 21100018
+    first_name: null
+    second_name: null
+    employee_id: null
   description: Поиск человека по ФИО или табельнику
-  selector: null
+  type: person_input
+  selector: 
+    id: null
+    attribute: null
+    xpath: null
 
 
-РИСК_ПОВЕДЕНИЯ:
+КНОПКА:
+  ОЦЕНКА: 
+    ДАЛЕЕ: &КНОПКА.ОЦЕНКА.ДАЛЕЕ
+      selector: 
+        id: next_button
+    ОТМЕНИТЬ: &КНОПКА.ОЦЕНКА.ОТМЕНИТЬ
+      selector:
+        id: cancel_button
+
+ИНПУТ:
   ОЦЕНКА:
-    ИНПУТ:
-      ИМЯ_ПРОДУКТА: &РИСК_ПОВЕДЕНИЯ.ОЦЕНКА.ИНПУТ.ИМЯ_ПРОДУКТА
-        type: *text_input
-        answer: Кредитная карта
-        required: yes
-        selector:
-          id: product_name
+    ИМЯ_ПРОДУКТА: &ИНПУТ.ОЦЕНКА.ИМЯ_ПРОДУКТА
+      <<: *text_input_type
+      answer: Кредитная карта
+      required: yes
+      selector:
+        id: product_name
+
+    ОПИСАНИЕ: &ИНПУТ.ОЦЕНКА.ОПИСАНИЕ
+      <<: *text_input_type
+      answer: Тестовое описание
+      required: yes
+      selector: 
+        id: description
+
+    БИЗНЕС_ЗАКАЗЧИК: &ИНПУТ.ОЦЕНКА.БИЗНЕС_ЗАКАЗЧИК
+      <<: *person_input_type
+      answer: 
+        first_name: Alexey
+        second_name: Zaveryaev
+        employee_id: 21100018
+      required: no
+      selector:
+        id: business_customer
 
 
-    КНОПКА:
-      ДАЛЕЕ: &РИСК_ПОВЕДЕНИЯ.ОЦЕНКА.КНОПКА.ДАЛЕЕ
-        selector: 
-          id: next_button
-      ОТМЕНИТЬ: &РИСК_ПОВЕДЕНИЯ.ОЦЕНКА.КНОПКА.ОТМЕНИТЬ
-        selector:
-          id: cancel_button
+
+fillForm:
+  - <<: *ИНПУТ.ОЦЕНКА.ИМЯ_ПРОДУКТА
+  - <<: *ИНПУТ.ОЦЕНКА.ОПИСАНИЕ  
+  - <<: *ИНПУТ.ОЦЕНКА.БИЗНЕС_ЗАКАЗЧИК
 
 
 
-production:
-  <<: *defaults  # Подключаем якорь "defaults" повторно
-  host:  # Перезаписываем параметр "host"
+
