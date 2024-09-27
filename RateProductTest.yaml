@@ -1,0 +1,140 @@
+# Типы инпутов
+text_input_type: &text_input_type
+  answer:
+  description: Обычное текстовое поле
+  type: text_input
+  required:
+  selector: 
+    id:
+    attribute:
+    xpath:
+
+search_input_type: &search_input_type
+   answer:
+   description: Поиск в плоском справочнике
+   type: search_input
+   required:
+   order: 1
+   selector: 
+    id:
+    attribute:
+    xpath:
+
+person_input_type: &person_input_type
+  answer: 
+    first_name:
+    second_name: 
+    employee_id: 
+  description: Поиск человека по ФИО или табельнику
+  type: person_input
+  selector: 
+    id: 
+    attribute: 
+    xpath:
+
+info.loginPersonType: &loginPersonType
+  person: 
+    employee_id:
+    first_name:
+    second_name:
+    roles: []
+
+
+# HTML элементы
+КНОПКА:
+  ОЦЕНКА: 
+    ДАЛЕЕ: &КНОПКА.ОЦЕНКА.ДАЛЕЕ
+      selector: 
+        id: next_button
+    ОТМЕНИТЬ: &КНОПКА.ОЦЕНКА.ОТМЕНИТЬ
+      selector:
+        id: cancel_button
+
+ИНПУТ:
+  ОЦЕНКА:
+    ИМЯ_ПРОДУКТА: &ИНПУТ.ОЦЕНКА.ИМЯ_ПРОДУКТА
+      <<: *text_input_type
+      answer: Кредитная карта
+      required: yes
+      selector:
+        id: product_name
+
+    ОПИСАНИЕ: &ИНПУТ.ОЦЕНКА.ОПИСАНИЕ
+      <<: *text_input_type
+      answer: Тестовое описание
+      required: yes
+      selector: 
+        id: description
+
+    БИЗНЕС_ЗАКАЗЧИК: &ИНПУТ.ОЦЕНКА.БИЗНЕС_ЗАКАЗЧИК
+      <<: *person_input_type
+      answer: 
+        first_name: Alexey
+        second_name: Zaveryaev
+        employee_id: 21100018
+      required: no
+      selector:
+        id: business_customer
+
+
+action.loginAsUser: &loginAsUser
+  loginAsUser:
+    description: Логин на сайт под определенным пользователем.
+    first_name: Alexey
+    second_name: Zaveryaev
+    employee_id: 21311209
+    roles: [RISK_TESTER]
+  expectedResult:
+    # Например проверяем что наверху справа страницы указаны данные пользователя.
+
+action.goToConductPage: &goToConductPage
+  goToConductPage: 
+    description: Переходим на страницу риск...
+    options: 
+      url: conduct-page.ru
+    expectedResult:
+    # Например ожидаем увидеть на странице определенные элементы
+
+action.clickRateButton: &clickRateButton
+  clickRateButton:
+    description: Нажимаем кнопку оценить продукТ.
+    options:
+      selector:
+        id: rate-button
+    expectedResult:
+    # Например открылась другая страница, появились определенные элементы.
+
+
+
+
+action.fillProductParams: &fillProductParams
+  # название копируемого объекта должно быть уникальным - это ключ по которому
+  # в коде мы будем определять действие которое выполняем
+  fillProductParams:
+    description: Заполнение параметров продукта.
+
+    # какие поля мы заполняем.
+    fields: 
+      - <<: *ИНПУТ.ОЦЕНКА.ИМЯ_ПРОДУКТА
+      - <<: *ИНПУТ.ОЦЕНКА.ОПИСАНИЕ  
+      - <<: *ИНПУТ.ОЦЕНКА.
+    # какое поведение мы ожидаем в результате выполнения этих действий.
+    expectedResult: 
+      # Например проверяем что можем перейти к следующему шагу.
+  
+
+# Главный скрипт автотеста.
+main: 
+  # Шаг 1. Логинимся под пользователем Alexey Zaveryaev
+  - <<: *loginAsUser
+  # Шаг 2. Переходим на страницу риск...
+  - <<: *goToConductPage
+  # Шаг 3. Нажимаем на кнопку оценить продукт.
+  - <<: *clickRateButton
+  # Шаг 3. Заполняем форму.  
+  - <<: *fillProductParams
+  
+
+
+
+
