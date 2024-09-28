@@ -32,7 +32,7 @@ person_input_type: &person_input_type
     attribute: 
     xpath:
 
-type.loginPersonType: &loginPersonType
+type.login_person_type: &login_person_type
   person: 
     employee_id:
     first_name:
