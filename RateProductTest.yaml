@@ -108,12 +108,8 @@ action.clickRateButton: &clickRateButton
 
 
 action.fillProductParams: &fillProductParams
-  # название копируемого объекта должно быть уникальным - это ключ по которому
-  # в коде мы будем определять действие которое выполняем
   fillProductParams:
     description: Заполнение параметров продукта.
-
-    # какие поля мы заполняем.
     fields: 
       - *ИНПУТ.ОЦЕНКА.ИМЯ_ПРОДУКТА
       - *ИНПУТ.ОЦЕНКА.ОПИСАНИЕ  
