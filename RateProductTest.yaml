@@ -97,7 +97,7 @@ action.goToConductPage: &goToConductPage
 
 action.clickRateButton: &clickRateButton
   clickRateButton:
-    description: Нажимаем кнопку оценить продукТ.
+    description: Нажимаем кнопку оценить продукт.
     options:
       selector:
         id: rate-button
@@ -115,9 +115,9 @@ action.fillProductParams: &fillProductParams
 
     # какие поля мы заполняем.
     fields: 
-      - <<: *ИНПУТ.ОЦЕНКА.ИМЯ_ПРОДУКТА
-      - <<: *ИНПУТ.ОЦЕНКА.ОПИСАНИЕ  
-      - <<: *ИНПУТ.ОЦЕНКА.
+      - *ИНПУТ.ОЦЕНКА.ИМЯ_ПРОДУКТА
+      - *ИНПУТ.ОЦЕНКА.ОПИСАНИЕ  
+      - *ИНПУТ.ОЦЕНКА.
     # какое поведение мы ожидаем в результате выполнения этих действий.
     expectedResult: 
       # Например проверяем что можем перейти к следующему шагу.
@@ -126,13 +126,13 @@ action.fillProductParams: &fillProductParams
 # Главный скрипт автотеста.
 main: 
   # Шаг 1. Логинимся под пользователем Alexey Zaveryaev
-  - <<: *loginAsUser
+  - *loginAsUser
   # Шаг 2. Переходим на страницу риск...
-  - <<: *goToConductPage
+  - *goToConductPage
   # Шаг 3. Нажимаем на кнопку оценить продукт.
-  - <<: *clickRateButton
-  # Шаг 3. Заполняем форму.  
-  - <<: *fillProductParams
+  - *clickRateButton
+  # Шаг 4. Заполняем форму.  
+  - *fillProductParams
   
 
 
