@@ -85,7 +85,7 @@ action.loginAsUser: &loginAsUser
     employee_id: 21311209
     roles: [RISK_TESTER]
   expectedResult:
-    # Например проверяем что наверху справа страницы указаны данные пользователя.
+    # Например проверяем что указаны данные пользователя.
 
 action.goToConductPage: &goToConductPage
   goToConductPage: 
@@ -93,7 +93,7 @@ action.goToConductPage: &goToConductPage
     options: 
       url: conduct-page.ru
     expectedResult:
-    # Например ожидаем увидеть на странице определенные элементы
+    # Например ожидаем увидеть на странице определенные элементы.
 
 action.clickRateButton: &clickRateButton
   clickRateButton:
@@ -117,7 +117,7 @@ action.fillProductParams: &fillProductParams
 
 # Главный скрипт автотеста.
 main: 
-  # Шаг 1. Логинимся под пользователем Alexey Zaveryaev
+  # Шаг 1. Логинимся под пользователем Alexey Zaveryaev.
   - *loginAsUser
   # Шаг 2. Переходим на страницу риск...
   - *goToConductPage
