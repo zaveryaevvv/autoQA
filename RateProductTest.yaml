@@ -104,9 +104,6 @@ action.clickRateButton: &clickRateButton
     expectedResult:
     # Например открылась другая страница, появились определенные элементы.
 
-
-
-
 action.fillProductParams: &fillProductParams
   fillProductParams:
     description: Заполнение параметров продукта.
